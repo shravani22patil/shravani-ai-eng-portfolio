@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import printer from '../../assets/resume/printer.gif';
 import Resume from '../../assets/resume/Shravani_Patil_AI_Engineer_Resume.pdf';
 
