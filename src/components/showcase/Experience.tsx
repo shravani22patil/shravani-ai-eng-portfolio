@@ -1,293 +1,219 @@
-import React from 'react';
+﻿import React from 'react';
 import ResumeDownload from './ResumeDownload';
 
-export interface ExperienceProps {}
+const experiences = [
+    {
+        company: 'FlyRank AI',
+        location: 'Remote · Chicago, USA',
+        role: 'Backend AI Engineering Intern',
+        duration: 'Jun 2026 – Aug 2026',
+        summary:
+            'Worked on backend engineering assignments focused on REST API development, data persistence, authentication, and web-scraping pipelines.',
+        highlights: [
+            'Developed a FastAPI REST API across three staged assignments, progressing from in-memory storage to SQLite and Dockerized PostgreSQL.',
+            'Implemented Pydantic request and response schemas, reusable Supabase JWT authentication dependencies, protected routes, and Swagger API documentation.',
+            'Built a six-stage web-scraping pipeline with pagination, eight-field extraction, price normalization, URL-based deduplication, caching, and HTTP error handling.',
+            'Generated structured JSON outputs for validated records, failures, and run metrics, and checked idempotency across repeated runs.',
+        ],
+        technologies: [
+            'Python',
+            'FastAPI',
+            'Pydantic',
+            'PostgreSQL',
+            'SQLite',
+            'Docker',
+            'Supabase Auth',
+        ],
+    },
+    {
+        company: 'UniConverge Technologies · Upskill Campus',
+        location: 'Remote · Noida, India',
+        role: 'Data Science & Machine Learning Intern',
+        duration: 'Apr 2026 – Jun 2026',
+        summary:
+            'Worked on computer vision and machine learning tasks involving agricultural image data and model development.',
+        highlights: [
+            'Fine-tuned a YOLOv8 model on agricultural field images for crop and weed detection across sesame crop varieties.',
+            'Applied Keras ImageDataGenerator augmentation to improve class balance.',
+            'Completed a machine learning capstone covering data preprocessing, feature engineering, model training, and evaluation on an industrial dataset.',
+        ],
+        technologies: [
+            'Python',
+            'YOLOv8',
+            'Keras',
+            'Image Augmentation',
+            'Machine Learning',
+        ],
+    },
+    {
+        company: 'Edunet Foundation · VOIS & Vodafone',
+        location: 'Remote · Maharashtra, India',
+        role: 'Data Analyst Intern',
+        duration: 'Sep 2025 – Oct 2025',
+        summary:
+            'Worked with customer feedback data to support sentiment analysis, trend monitoring, and business reporting.',
+        highlights: [
+            'Processed more than 50,000 customer feedback records using Pandas and NumPy.',
+            'Implemented an LLM-assisted ETL pipeline for trend detection and weekly summaries.',
+            'Created three Power BI dashboards to track Net Promoter Score (NPS), churn signals, and campaign KPIs.',
+        ],
+                technologies: [
+            'Python',
+            'Pandas',
+            'NumPy',
+            'LLM-assisted ETL',
+            'Power BI',
+        ],
+    },
+    {
+        company: 'SecurePoint Technologies',
+        location: 'Remote · Maharashtra, India',
+        role: 'Cybersecurity Intern',
+        duration: 'Jun 2025 – Jul 2025',
+        summary:
+            'Completed introductory cybersecurity training through instructor-led sessions, exploring networking fundamentals, network security, common vulnerabilities, and basic security assessment concepts.',
+        highlights: [
+            'Built foundational knowledge of networking concepts, including TCP/IP and common network protocols.',
+            'Learned about network security, security risks, and common vulnerability concepts.',
+            'Explored how vulnerability assessment and security best practices contribute to reliable software systems.',
+        ],
+        technologies: [
+            'Networking Fundamentals',
+            'TCP/IP',
+            'Network Security',
+            'Vulnerability Assessment Basics',
+        ],
+    },
+];
 
-const Experience: React.FC<ExperienceProps> = (props) => {
+const Experience: React.FC = () => {
     return (
-        <div className="site-page-content">
-            <ResumeDownload />
-            <div style={styles.headerContainer}>
-                <div style={styles.header}>
-                    <div style={styles.headerRow}>
-                        <h1>Hover</h1>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href={'https://hover.gg/'}
+        <div className="site-page-content experience-page" style={{ paddingBottom: 32 }}>
+            <p style={{ fontSize: 12, letterSpacing: 2, opacity: 0.7 }}>
+                CAREER / EXPERIENCE
+            </p>
+
+            <h1>Experience</h1>
+
+            <p style={{ maxWidth: 720, lineHeight: 1.8 }}>
+                My experience spans backend engineering, machine learning,
+                and data analytics. Each role has helped me develop practical
+                skills in building systems, working with data, and solving
+                technical problems.
+            </p>
+
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 24,
+                    marginTop: 32,
+                }}
+            >
+                {experiences.map((experience, index) => (
+                    <article
+                        key={experience.company}
+                        style={{
+                            padding: 24,
+                            border: '1px solid var(--border-color, #88888866)',
+                            borderRadius: 10,
+                            boxSizing: 'border-box',
+                            minWidth: 0,
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                                flexWrap: 'wrap',
+                                gap: 12,
+                                marginBottom: 16,
+                            }}
                         >
-                            <h4>www.hover.gg</h4>
-                        </a>
-                    </div>
-                    <div style={styles.headerRow}>
-                        <h3>Frontend Engineer</h3>
-                        <b>
-                            <p>Summer 2020 - Fall 2021</p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-            <div className="text-block">
-                <p>
-                    Targeted towards online content creators and streamers
-                    looking to build a brand, Hover is the home of over 150K
-                    users. Written in Typescript using React, React-Native,
-                    Framer, Express, and Redux.
-                </p>
-                <br />
-                <ul>
-                    <li>
-                        <p>
-                            Architected and engineered the vertical scrolling
-                            discover player which, at its daily peak, was
-                            responsible for generating over 600,000 views across
-                            20,000 active users.
+                            <div className="experience-title-block">
+    <p className="experience-number">
+        EXPERIENCE 0{index + 1}
+    </p>
+
+    <h2 className="experience-company">
+        {experience.company}
+    </h2>
+
+    <h3 className="experience-role">
+        {experience.role}
+    </h3>
+
+    <p className="experience-location">
+        {experience.location}
+    </p>
+</div>
+
+                            <span
+                                style={{
+                                    fontSize: 12,
+                                    border: '1px solid var(--border-color, #88888866)',
+                                    borderRadius: 5,
+                                    padding: '7px 10px',
+                                    whiteSpace: 'normal',
+                                }}
+                            >
+                                {experience.duration}
+                            </span>
+                        </div>
+
+                        <p style={{ lineHeight: 1.8 }}>
+                            {experience.summary}
                         </p>
-                    </li>
-                    <li>
-                        <p>
-                            Designed and implemented multiple features to
-                            increase app usability and user experience while
-                            ensuring the quality, maintainability and
-                            scalability of the front end as the user base grew
-                            by over 50,000.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Coordinated major refactors targeted towards app
-                            optimization and performance resulting in a smoother
-                            user experience and accomplished by eliminating
-                            redundant re-renders and API calls by over 50%.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Directed and executed an internal migration of 3
-                            individual repositories to a single monorepo,
-                            greatly reducing overhead for developing new
-                            features, fixing bugs, and managing dependencies.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Rebuilt the website with React and shared mobile app
-                            components allowing users to access a wide variety
-                            of app interactions entirely on the web, resulting
-                            in over 700,000 total site visits.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div style={styles.headerContainer}>
-                <div style={styles.header}>
-                    <div style={styles.headerRow}>
-                        <h1>BrACS</h1>
-                        <a
-                            target="_blank"
-                            rel="noreferrer"
-                            href={'https://bracs.co/'}
+
+                        <ul style={{ paddingLeft: 22, lineHeight: 1.8 }}>
+                            {experience.highlights.map((highlight) => (
+                                <li key={highlight} style={{ marginBottom: 8 }}>
+                                    {highlight}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                gap: 8,
+                                marginTop: 18,
+                            }}
                         >
-                            <h4>www.bracs.co</h4>
-                        </a>
-                    </div>
-                    <div style={styles.headerRow}>
-                        <h3>Team Lead & Engineer</h3>
-                        <b>
-                            <p>Fall 2021 - Spring 2022</p>
-                        </b>
-                    </div>
-                </div>
+                            {experience.technologies.map((technology) => (
+                                <span
+                                    key={technology}
+                                    style={{
+                                        fontSize: 11,
+                                        padding: '6px 9px',
+                                        borderRadius: 4,
+                                        background: 'var(--tag-background, #88888818)',
+                                        border: '1px solid var(--border-color, #88888844)',
+                                    }}
+                                >
+                                    {technology}
+                                </span>
+                            ))}
+                        </div>
+                    </article>
+                ))}
             </div>
-            <div className="text-block">
-                <p>
-                    Supervised and developed the front end of bracs.co, a
-                    beautifully simple and effective bracket creation and
-                    management engine. Written in Typescript using React and
-                    deployed using AWS Elastic Beanstalk.
+
+            <div style={{ marginTop: 32 }}>
+                <h3>Want more details?</h3>
+
+                <p style={{ lineHeight: 1.8 }}>
+                    My resume includes additional information about my
+                    education, technical skills, projects, and certifications.
                 </p>
-                <br />
-                <ul>
-                    <li>
-                        <p>
-                            Managed the project and team members by conducting
-                            bi-weekly stand-ups.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Architected bracket view UI using React Flow and
-                            custom bracket data types built from binary trees.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Created conversion algorithms to serialize bracket
-                            tree data to allow for saving in the cloud.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Implemented bracket generation utilities which
-                            employ gray code for proper team seeding and
-                            placement.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div style={styles.headerContainer}>
-                <div style={styles.header}>
-                    <div style={styles.headerRow}>
-                        <h1>K-F/X</h1>
-                        <a
-                            target="_blank"
-                            rel="noreferrer"
-                            href={'https://kfxnyc.com/'}
-                        >
-                            <h4>www.kfxnyc.com</h4>
-                        </a>
-                    </div>
-                    <div style={styles.headerRow}>
-                        <h3>Special Effects Technician</h3>
-                        <b>
-                            <p>Fall 2019, Summer 2021</p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-            <div className="text-block">
-                <p>
-                    Applied problem solving and technical skills to operate
-                    large equipment such as rain machines, fog machines, small
-                    explosives and general rigging with a professional crew of
-                    50+ people.
-                </p>
-                <br />
-                <h3 style={styles.indent}>Screen Credits:</h3>
-                <ul>
-                    <li style={styles.row}>
-                        <p>• Ray Donovan</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.sho.com/ray-donovan"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                SHOWTIME
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• Ray Donovan: The Movie</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.sho.com/titles/3508117/ray-donovan-the-movie"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                SHOWTIME
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• Hightown</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.starz.com/us/en/series/hightown/57463"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                STARZ
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• Bull</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.cbs.com/shows/bull/"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                CBS
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• At Home with Amy Sedaris</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.trutv.com/shows/at-home-with-amy-sedaris"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                truTV
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                </ul>
+
+                <ResumeDownload />
             </div>
         </div>
     );
 };
 
-const styles: StyleSheetCSS = {
-    header: {
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: '100%',
-    },
-    skillRow: {
-        flex: 1,
-        justifyContent: 'space-between',
-    },
-    skillName: {
-        minWidth: 56,
-    },
-    skill: {
-        flex: 1,
-        padding: 8,
-        alignItems: 'center',
-    },
-    progressBar: {
-        flex: 1,
-        background: 'red',
-        marginLeft: 8,
-        height: 8,
-    },
-    hoverLogo: {
-        height: 32,
-        marginBottom: 16,
-    },
-    headerContainer: {
-        alignItems: 'flex-end',
-        width: '100%',
-        justifyContent: 'center',
-    },
-    hoverText: {
-        marginBottom: 8,
-    },
-    indent: {
-        marginLeft: 24,
-    },
-    headerRow: {
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-    },
-    row: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },
-};
-
 export default Experience;
+

@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
+﻿import React, { useEffect, useState, useCallback } from 'react';
 import colors from '../../constants/colors';
-import twitterIcon from '../../assets/pictures/contact-twitter.png';
 import ghIcon from '../../assets/pictures/contact-gh.png';
 import inIcon from '../../assets/pictures/contact-in.png';
 import ResumeDownload from './ResumeDownload';
@@ -50,52 +49,51 @@ const Contact: React.FC<ContactProps> = (props) => {
 
     async function submitForm() {
         if (!isFormValid) {
-            setFormMessage('Form unable to validate, please try again.');
+            setFormMessage('Please enter a valid email, name, and message.');
             setFormMessageColor('red');
             return;
         }
+
+        setIsLoading(true);
+        setFormMessage('');
+
         try {
-            setIsLoading(true);
-            const res = await fetch(
-                'https://api.henryheffernan.com/api/contact',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        company,
-                        email,
-                        name,
-                        message,
-                    }),
-                }
-            );
-            // the response will be either {success: true} or {success: false, error: message}
-            const data = (await res.json()) as
-                | {
-                      success: false;
-                      error: string;
-                  }
-                | { success: true };
-            if (data.success) {
-                setFormMessage(`Message successfully sent. Thank you ${name}!`);
+            const response = await fetch('https://formspree.io/f/xljjwnlw', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    company,
+                    message,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.ok !== false) {
+                setFormMessage(`Message sent successfully. Thank you, ${name}!`);
+                setFormMessageColor(colors.blue);
                 setCompany('');
                 setEmail('');
                 setName('');
                 setMessage('');
-                setFormMessageColor(colors.blue);
-                setIsLoading(false);
             } else {
-                setFormMessage(data.error);
+                setFormMessage(
+                    data.errors?.map((error: { message: string }) => error.message).join(', ')
+                    || 'Unable to send your message. Please try again.'
+                );
                 setFormMessageColor(colors.red);
-                setIsLoading(false);
             }
-        } catch (e) {
+        } catch {
             setFormMessage(
-                'There was an error sending your message. Please try again.'
+                'There was a connection error. Please try again.'
             );
             setFormMessageColor(colors.red);
+        } finally {
             setIsLoading(false);
         }
     }
@@ -116,30 +114,23 @@ const Contact: React.FC<ContactProps> = (props) => {
                 <div style={styles.socials}>
                     <SocialBox
                         icon={ghIcon}
-                        link={'https://github.com/henryjeff'}
+                        link={'https://github.com/shravani22patil'}
                     />
                     <SocialBox
                         icon={inIcon}
-                        link={'https://www.linkedin.com/in/henryheffernan/'}
-                    />
-                    <SocialBox
-                        icon={twitterIcon}
-                        link={'https://twitter.com/henryheffernan'}
+                        link={'https://www.linkedin.com/in/shravani-patil-38791b286/'}
                     />
                 </div>
             </div>
             <div className="text-block">
                 <p>
-                    I am currently employed, however if you have any
-                    opportunities, feel free to reach out - I would love to
-                    chat! You can reach me via my personal email, or fill out
-                    the form below!
+                    I am a Computer Engineering student passionate about AI engineering, AI agents, and building practical AI-powered applications. I am open to AI/ML internship opportunities, collaborative projects, and connecting with people working on useful technology.
                 </p>
                 <br />
                 <p>
                     <b>Email: </b>
-                    <a href="mailto:henryheffernan@gmail.com">
-                        henryheffernan@gmail.com
+                    <a href="mailto:shravanipatil580@gmail.com">
+                        shravanipatil580@gmail.com
                     </a>
                 </p>
 
