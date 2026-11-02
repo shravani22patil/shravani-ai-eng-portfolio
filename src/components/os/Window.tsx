@@ -416,16 +416,17 @@ const styles: StyleSheetCSS = {
         paddingRight: 2,
         boxSizing: 'border-box',
     },
-    contentOuter: {
-        border: `1px solid ${Colors.white}`,
-        borderTopColor: colors.darkGray,
-        borderLeftColor: colors.darkGray,
-        flexGrow: 1,
-
-        marginTop: 8,
-        marginBottom: 8,
-        overflow: 'hidden',
-    },
+contentOuter: {
+    border: `1px solid ${Colors.white}`,
+    borderTopColor: colors.darkGray,
+    borderLeftColor: colors.darkGray,
+    flex: '1 1 0%',
+    minHeight: 0,
+    minWidth: 0,
+    marginTop: 8,
+    marginBottom: 8,
+    overflow: 'hidden',
+},
     contentInner: {
         border: `1px solid ${Colors.lightGray}`,
         borderTopColor: colors.black,
