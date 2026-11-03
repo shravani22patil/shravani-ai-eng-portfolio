@@ -12,12 +12,12 @@ import useInitialWindowSize from '../../hooks/useInitialWindowSize';
 export interface ShowcaseExplorerProps extends WindowAppProps {}
 
 const ShowcaseExplorer: React.FC<ShowcaseExplorerProps> = (props) => {
-    const { initWidth, initHeight } = useInitialWindowSize({ margin: 100 });
+    const { initWidth, initHeight } = useInitialWindowSize({ margin: 160 });
 
     return (
         <Window
-            top={24}
-            left={56}
+            top={40}
+            left={80}
             width={initWidth}
             height={initHeight}
             windowTitle="Shravani Patil - AI Portfolio"
@@ -28,7 +28,18 @@ const ShowcaseExplorer: React.FC<ShowcaseExplorerProps> = (props) => {
             bottomLeftText={'Â© Shravani R. Patil'}
         >
             <Router>
-                <div className="site-page">
+                <div
+  className="site-page"
+  style={{
+    display: 'flex',
+    flex: '1 1 auto',
+    width: '100%',
+    height: '100%',
+    minHeight: 0,
+    minWidth: 0,
+    overflow: 'hidden',
+  }}
+>
                     <VerticalNavbar />
                     <Routes>
                         <Route path="/" element={<Home />} />

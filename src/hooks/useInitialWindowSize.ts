@@ -1,13 +1,11 @@
-// import { useState, useCallback } from 'react';
-
 export default function useInitialWindowSize({ margin }: { margin?: number }) {
-    let m = margin || 0;
+    const m = margin ?? 100;
 
-    const winW = window.innerWidth;
-    const winH = window.innerHeight;
+    const winW = document.documentElement.clientWidth || window.innerWidth;
+    const winH = document.documentElement.clientHeight || window.innerHeight;
 
-    let initWidth = winW - m;
-    let initHeight = winH - m;
+    const initWidth = Math.max(0, winW - m);
+    const initHeight = Math.max(0, winH - m);
 
     return { initWidth, initHeight };
 }
